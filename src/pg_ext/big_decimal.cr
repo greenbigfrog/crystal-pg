@@ -6,15 +6,8 @@ module PG
     def to_big_d
       return BigDecimal.new("0") if nan? || ndigits == 0
 
-      string = String.build do |str|
-        str << digits.first || 0
-        next unless digits.size > 1
-        str << '.'
-        str << digits[1]
-      end
-
-      quot = BigDecimal.new(string)
-      neg? ? -quot : quot
+      # Since BigDecimal allows initialaztion from String, why should one reinvent the wheel?
+      BigDecimal.new(to_s)
     end
   end
 
