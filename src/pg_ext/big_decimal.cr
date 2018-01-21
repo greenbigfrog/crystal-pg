@@ -6,11 +6,14 @@ module PG
     def to_big_d
       return BigDecimal.new("0") if nan? || ndigits == 0
 
-      ten_k = BigInt.new(10_000)
-      num = digits.reduce(BigInt.new(0)) { |a, i| a*ten_k + BigInt.new(i) }
-      # den = ten_k**(ndigits - 1 - weight)
-      # quot = BigRational.new(num, den)
-      quot = BigDecimal.new(num)
+      string = String.build do |str|
+        str << digits.first || 0
+        next unless digits[1]
+        str << '.'
+        str << digits[1]
+      end
+
+      quot = BigDecimal.new(string)
       neg? ? -quot : quot
     end
   end
