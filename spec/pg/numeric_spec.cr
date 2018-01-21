@@ -1,5 +1,6 @@
 require "../spec_helper"
 require "../../src/pg_ext/big_rational"
+require "../../src/pg_ext/big_decimal"
 
 private def n(nd, w, s, ds, d)
   PG::Numeric.new(nd.to_i16, w.to_i16, s.to_i16, ds.to_i16, d.map(&.to_i16))
