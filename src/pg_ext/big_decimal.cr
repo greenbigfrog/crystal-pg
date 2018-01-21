@@ -4,7 +4,7 @@ module PG
   struct Numeric
     # Returns a BigDecimal representation of the numeric. This retains all precision.
     def to_big_d
-      return BigDecimal("0") if nan? || ndigits == 0
+      return BigDecimal.new("0") if nan? || ndigits == 0
 
       ten_k = BigInt.new(10_000)
       num = digits.reduce(BigInt.new(0)) { |a, i| a*ten_k + BigInt.new(i) }
