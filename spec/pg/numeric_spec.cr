@@ -9,7 +9,7 @@ private def br(n, d)
   BigRational.new(n, d)
 end
 
-private def db(d)
+private def bd(d)
   BigDecimal.new(d)
 end
 
