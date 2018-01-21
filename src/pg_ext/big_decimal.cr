@@ -8,7 +8,7 @@ module PG
 
       string = String.build do |str|
         str << digits.first || 0
-        next unless digits[1]
+        next unless digits.size > 1
         str << '.'
         str << digits[1]
       end
